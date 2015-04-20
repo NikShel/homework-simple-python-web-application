@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <h1>Your links:</h1>
+    {% for x in user_links %}
+        <form action="delete_link_{{ x.short }}" method="post">
+        <label for="del_{{ x.short }}">{{ x.long }} --> {{ x.short }} Redirect count: {{ x.count }}</label> <input type="submit" value="Delete" id="del_{{ x.short }}"><br>
+        </form>
+    {% endfor %}
+    <hr>
+    <form action="add_link" method="post">
+        <label for="long_link">Long link:</label>
+        <input type="text" name="long_link" id="long_link"><br>
+        <input type="checkbox" name="need_delete" id="need_delete">
+        <label for="need_delete">Delete after 1 usage</label><br>
+        <input type="submit" value="Get short link">
+    </form>
+</body>
+</html>
